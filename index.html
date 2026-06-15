@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>昆象云科技教育资源整合平台（2024-2027）</title>
+    <link rel="icon" href="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/fe1565ec-02bf-4b26-800f-b6b659adee28" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: url('https://kunxy.top/jfm.jpg') no-repeat center center/cover fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 15px; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .overlay {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .overlay h1 {
+            font-size: clamp(1.2rem, 3vw, 2.2rem); 
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .overlay .tips-text {
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .overlay .countdown {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: #ff4757;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .exam-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            margin: 10px 0 20px;
+        }
+        .exam-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+        }
+        .exam-table th, .exam-table td {
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        .exam-table th {
+            background: rgba(255, 150, 0, 0.6);
+        }
+        .exam-note {
+            color: #ffd166;
+            font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+            margin: 8px 0 15px;
+        }
+
+        .motivational-quote {
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 179, 71, 0.8));
+            padding: 20px 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border: 2px solid #fff;
+        }
+
+        .motivational-quote .quote-text {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: #fff;
+            font-weight: bold;
+            line-height: 1.8;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .platform-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            padding: 0 10px;        
+        }
+
+        .new-row {
+            grid-column: 1 / -1; 
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .platform-box {
+            aspect-ratio: 1/1;
+            background: rgba(189, 189, 189, 0.65);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 12px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid rgba(255, 255, 250, 0.2);
+        }
+
+        .platform-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(189, 189, 189, 0.85);
+        }
+
+        .platform-box img {
+            width: 70%;
+            max-width: 80px;
+            max-height: 80px;
+            margin-bottom: 10px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .platform-box span {
+            font-size: clamp(0.85rem, 1.2vw, 1rem); 
+            word-break: break-word;
+            padding: 0 5px;
+            font-weight: 500; 
+        }
+
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 20px 15px; 
+            border-radius: 10px;
+            margin-top: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        footer p {
+            margin: 8px 0; 
+            font-size: clamp(0.8rem, 1vw, 1rem);
+            line-height: 1.5; 
+        }
+
+        .exam-info {
+            font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+            color: #ffd166;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .honesty-tip {
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+            color: #ff8a80;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .overlay {
+                padding: 20px 15px;
+            }
+            .platform-container {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 15px;
+            }
+            .new-row {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 15px;
+            }
+            .platform-box span {
+                font-size: 0.85rem;
+            }
+            body {
+                background-attachment: scroll;
+            }
+            .motivational-quote {
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .platform-container {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 12px;
+            }
+            .new-row {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 12px;
+            }
+            .platform-box {
+                padding: 8px;
+            }
+            .platform-box span {
+                font-size: 0.75rem;
+            }
+            .overlay {
+                padding: 15px 10px;
+            }
+            .overlay h1 {
+                font-size: 1.5rem;
+            }
+            body {
+                padding: 10px 5px;
+                background-attachment: scroll;
+            }
+            footer p {
+                font-size: 0.75rem;
+            }
+            .motivational-quote {
+                padding: 12px 15px;
+            }
+            .motivational-quote .quote-text {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .platform-container {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 10px;
+            }
+            .new-row {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 10px;
+            }
+            .platform-box img {
+                max-width: 60px;
+                max-height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>欢迎访问【昆象云科技教育资源整合平台（2024-2027）】</h1>
+        <span class="tips-text">昆象云科技提示您：</span>
+        <span class="countdown" id="countdown">距离2027年高考还有：计算中...</span>
+
+        <div class="exam-table-wrap" id="tableWrap">
+            <table class="exam-table">
+                <thead>
+                    <tr>
+                        <th>考试日期</th>
+                        <th>时段</th>
+                        <th>考试科目</th>
+                        <th>时长</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">6月7日（周一）<br>高考第1天</td>
+                        <td>09:00-11:30</td>
+                        <td>语文（全国统考）</td>
+                        <td>150分钟</td>
+                    </tr>
+                    <tr>
+                        <td>15:00-17:00</td>
+                        <td>数学（全国统考）</td>
+                        <td>120分钟</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">6月8日（周二）<br>高考第2天</td>
+                        <td>09:00-10:15</td>
+                        <td>物理/历史（首选科目）</td>
+                        <td>75分钟</td>
+                    </tr>
+                    <tr>
+                        <td>15:00-17:00</td>
+                        <td>外语（全国统考，含听力）</td>
+                        <td>120分钟</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">6月9日（周三）<br>高考第3天</td>
+                        <td>08:30-09:45</td>
+                        <td>化学（再选科目）</td>
+                        <td>75分钟</td>
+                    </tr>
+                    <tr>
+                        <td>11:00-12:15</td>
+                        <td>地理（再选科目）</td>
+                        <td>75分钟</td>
+                    </tr>
+                    <tr>
+                        <td>14:30-15:45</td>
+                        <td>思想政治（再选科目）</td>
+                        <td>75分钟</td>
+                    </tr>
+                    <tr>
+                        <td>17:00-18:15</td>
+                        <td>生物学（再选科目）</td>
+                        <td>75分钟</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="exam-note">考试安排仅供参考，请以本省招考院发布的信息为准！</p>
+        </div>
+
+        <div class="exam-info" id="examInfo"></div>
+        <div class="honesty-tip" id="honestyTip"></div>
+    </div>
+
+    <div class="motivational-quote" id="quoteContainer">
+        <span class="quote-text" id="quoteText">乾坤未定，你我皆是黑马！</span>
+    </div>
+
+    <div class="platform-container">
+        <a class="platform-box" href="https://www.zhixue.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/badb1733-5fb4-4d96-ba3f-972ec9af6ebb" alt="智学网" loading="lazy">
+            <span>智学网</span>
+        </a>
+        <a class="platform-box" href="https://www.smartedu.cn" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/dd99731f-c55d-40ef-9620-0767a0e1f394" alt="智慧教育平台" loading="lazy">
+            <span>智慧教育平台</span>
+        </a>
+        <a class="platform-box" href="https://www.zxxk.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/339c692f-6b01-4ece-abd4-58f7136d7c40" alt="学科网" loading="lazy">
+            <span>学科网</span>
+        </a>
+        <a class="platform-box" href="https://www.jyeoo.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/22582bb3-579e-446d-b660-23a3d443a9e6" alt="菁优网" loading="lazy">
+            <span>菁优网</span>
+        </a>
+        <a class="platform-box" href="https://m.tesoon.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/e8132be6-3d20-42d6-b917-0a511affc411" alt="天星教育" loading="lazy">
+            <span>天星教育</span>
+        </a>
+        <a class="platform-box" href="https://www.lxzwedu.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/6c50076c-8249-4185-a373-9b57f2b567cf" alt="理想树" loading="lazy">
+            <span>理想树</span>
+        </a>
+        <a class="platform-box" href="https://student.up366.cn" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/0143ebad-ecf3-4052-ba10-33fb14eaeed7" alt="天学网（学生端）-网页版" loading="lazy">
+            <span>天学网（学生端）-网页版</span>
+        </a>
+        <a class="platform-box" href="https://jyt.yn.gov.cn" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/c1e482ef-4c0a-4377-8d98-95148b75af0e" alt="云南省教育厅" loading="lazy">
+            <span>云南省教育厅</span>
+        </a>
+        <a class="platform-box" href="https://gaokao.chsi.com.cn" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/db56a3bd-304c-4c1f-b77e-edf8e33e71ca" alt="阳光高考" loading="lazy">
+            <span>阳光高考</span>
+        </a>
+        <a class="platform-box" href="https://www.gaokao.cn" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/17257296-fc7e-4d8f-bcd1-967c9bf6b9d2" alt="掌上高考" loading="lazy">
+            <span>掌上高考</span>
+        </a>
+        <a class="platform-box" href="https://www.ynzs.cn" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/8b084d63-6739-4963-a187-8c8819f72b02" alt="云南省招生考试院" loading="lazy">
+            <span>云南省招生考试院</span>
+        </a>
+        <a class="platform-box" href="https://www.ynxueye.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/8b084d63-6739-4963-a187-8c8819f72b02" alt="云南学业网" loading="lazy">
+            <span>云南学业网</span>
+        </a>
+        <a class="platform-box" href="https://gk.ynzs.cn" target="_blank" rel="noopener noreferrer">
+            <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/8b084d63-6739-4963-a187-8c8819f72b02" alt="云南省普通高等学校招生考生服务平台" loading="lazy">
+            <span>云南省普通高等学校招生考生服务平台</span>
+        </a>
+        
+        <div class="new-row">
+            <a class="platform-box" href="https://yongmukeji.top" target="_blank" rel="noopener noreferrer">
+                <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/69a86d49-2263-47bc-b51e-0b17876ffb8f" alt="永慕智创软件工作室（永慕科技）官网" loading="lazy">
+                <span>永慕智创软件工作室<原永慕科技>官网</span>
+            </a>
+            <a class="platform-box" href="https://kunxy.top" target="_blank" rel="noopener noreferrer">
+                <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/fe1565ec-02bf-4b26-800f-b6b659adee28" alt="昆象云科技官网" loading="lazy">
+                <span>昆象云科技官网</span>
+            </a>
+            <a class="platform-box" href="#" rel="noopener noreferrer">
+                <img src="https://hive.forms.usercontent.microsoft/Images/9188040d-6c67-4c5b-b112-36a304b66dad/00000000-0000-0000-0003-bffd409131bf/T0RRH45M4BJGVXSCOEE2GS5JAZ/e992c435-4f2c-4c9f-b3ec-421c5f11f56d" alt="更多平台收集中...">
+                <span>更多平台收集中...</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>主办单位：昆象云科技 &nbsp; 昆象云科技教育考试研究中心</p>
+        <p>技术支持：昆象云科技电化教育中心</p>
+        <p>本网站内容仅供参考，具体请以当地招考院发布的信息为准；且仅面向【云南省】地区，各平台排名不分先后，相关版权归各平台所有</p>
+        <p>本平台依据《昆象云科技半对外教育服务三年（2024 - 2027）高质量发展计划》相关内容进行建设</p>
+        <p>本平台仅提供信息整合、展示服务，不具备提供使用相应平台所需账号、付费服务使用权限等之义务，敬请悉知！</p>
+        <p id="runtime">网页已运行时间：计算中...</p>
+    </footer>
+
+    <script>
+        const examSchedule = [
+            {
+                start: new Date('2027-06-07T09:00:00'),
+                end: new Date('2027-06-07T11:30:00'),
+                name: '语文（全国统考，150分钟）',
+                timeStr: '09:00-11:30'
+            },
+            {
+                start: new Date('2027-06-07T15:00:00'),
+                end: new Date('2027-06-07T17:00:00'),
+                name: '数学（全国统考，120分钟）',
+                timeStr: '15:00-17:00'
+            },
+            {
+                start: new Date('2027-06-08T09:00:00'),
+                end: new Date('2027-06-08T10:15:00'),
+                name: '物理/历史（首选科目，75分钟）',
+                timeStr: '09:00-10:15'
+            },
+            {
+                start: new Date('2027-06-08T15:00:00'),
+                end: new Date('2027-06-08T17:00:00'),
+                name: '外语（全国统考，含听力，120分钟）',
+                timeStr: '15:00-17:00'
+            },
+            {
+                start: new Date('2027-06-09T08:30:00'),
+                end: new Date('2027-06-09T09:45:00'),
+                name: '化学（再选科目，75分钟）',
+                timeStr: '08:30-09:45'
+            },
+            {
+                start: new Date('2027-06-09T11:00:00'),
+                end: new Date('2027-06-09T12:15:00'),
+                name: '地理（再选科目，75分钟）',
+                timeStr: '11:00-12:15'
+            },
+            {
+                start: new Date('2027-06-09T14:30:00'),
+                end: new Date('2027-06-09T15:45:00'),
+                name: '思想政治（再选科目，75分钟）',
+                timeStr: '14:30-15:45'
+            },
+            {
+                start: new Date('2027-06-09T17:00:00'),
+                end: new Date('2027-06-09T18:15:00'),
+                name: '生物学（再选科目，75分钟）',
+                timeStr: '17:00-18:15'
+            }
+        ];
+
+        const honestyTips = [
+            "诚信考试，杜绝作弊，公平竞争，考出真实水平！",
+            "遵守考场纪律，维护考试公平，做诚信考生！",
+            "考试作弊将纳入诚信档案，影响升学就业，请严格遵守考试规则！",
+            "沉着冷静，认真答题，诚信应考，不负韶华！"
+        ];
+
+        const examGlobalStart = new Date('2027-06-07T00:00:00');
+        const examGlobalEnd = new Date('2027-06-09T18:15:00');
+
+        const countdownEl = document.getElementById('countdown');
+        const examInfoEl = document.getElementById('examInfo');
+        const honestyTipEl = document.getElementById('honestyTip');
+        const tableWrap = document.getElementById('tableWrap');
+
+        let isInExamNow = false;
+
+        function changeHonestyTip() {
+            if (isInExamNow) {
+                const idx = Math.floor(Math.random() * honestyTips.length);
+                honestyTipEl.textContent = honestyTips[idx];
+            } else {
+                honestyTipEl.textContent = '';
+            }
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            examInfoEl.innerHTML = '';
+            isInExamNow = false; // 重置考试状态
+
+            if (now < examGlobalStart) {
+                tableWrap.style.display = 'block';
+                honestyTipEl.innerHTML = '';
+                const diff = examGlobalStart - now;
+                const d = Math.floor(diff / (1000*60*60*24));
+                const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+                const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+                const s = Math.floor((diff % (1000*60)) / 1000);
+                countdownEl.textContent = `距离2027年高考还有：${d}天${h}时${m}分${s}秒`;
+                return;
+            }
+
+            tableWrap.style.display = 'none';
+
+            if (now > examGlobalEnd) {
+                countdownEl.textContent = '2027年高考已结束！';
+                examInfoEl.textContent = '其余未尽事项请以本省招考院通知为准';
+                honestyTipEl.innerHTML = '';
+                return;
+            }
+
+            let dayText = '';
+            const curDate = now.getDate();
+            if (curDate === 7) dayText = '高考第1天';
+            if (curDate === 8) dayText = '高考第2天';
+            if (curDate === 9) dayText = '高考第3天';
+            countdownEl.textContent = `2027年${dayText}`;
+
+            const currentExam = examSchedule.find(item => now >= item.start && now <= item.end);
+            if (currentExam) {
+                isInExamNow = true; // 标记正在考试
+                examInfoEl.textContent = `当前考试：${currentExam.name}（${currentExam.timeStr}）`;
+            } else {
+                honestyTipEl.innerHTML = '';
+                const nextExam = examSchedule.find(item => item.start > now);
+                if (nextExam) {
+                    examInfoEl.textContent = `下一科：${nextExam.name}（${nextExam.timeStr}）`;
+                } else {
+                    examInfoEl.textContent = '今日考试全部结束，请好好休息！';
+                }
+            }
+        }
+
+        // 网页运行时间
+        function updateRuntime() {
+            const startTime = new Date('2025-03-29T00:00:00').getTime();
+            const now = Date.now();
+            const elap = now - startTime;
+            const d = Math.floor(elap / (1000*60*60*24));
+            const h = Math.floor((elap % (1000*60*60*24)) / (1000*60*60));
+            const m = Math.floor((elap % (1000*60*60)) / (1000*60));
+            const s = Math.floor((elap % (1000*60)) / 1000);
+            document.getElementById('runtime').textContent = 
+                `网页已运行时间（2025年3月29日00：00起）：${d}天${h}时${m}分${s}秒`;
+        }
+
+        const quotes = [
+            "不负韶华，不负努力，高考加油！",
+            "愿你提笔从容自信，合笔如愿以偿！",
+            "以笔为剑，以梦为马，高考必胜！",
+            "十年磨一剑，今朝试锋芒！",
+            "乾坤未定，你我皆是黑马！",
+            "星光不负赶路人，时光不负有心人！",
+            "愿你历尽千帆，终能得偿所愿！",
+            "高考是场青春的战役，拼尽全力就好！",
+            "彼方尚有荣光在，少年不惧岁月长！",
+            "愿你合上笔盖的刹那，有侠客收剑入鞘的骄傲！"
+        ];
+        function updateQuote() {
+            const idx = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quoteText').textContent = quotes[idx];
+        }
+
+        setInterval(() => {
+            updateCountdown();
+            updateRuntime();
+        }, 1000);
+
+        setInterval(changeHonestyTip, 5000);
+
+        setInterval(updateQuote, 30000);
+
+        updateCountdown();
+        updateRuntime();
+        updateQuote();
+
+        document.addEventListener('DOMContentLoaded', function(){
+            const boxes = document.querySelectorAll('.platform-box');
+            boxes.forEach(box => {
+                box.addEventListener('touchstart', function(){
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                    this.style.background = 'rgba(189,189,189,0.85)';
+                });
+                box.addEventListener('touchend', function(){
+                    setTimeout(()=>{
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                        this.style.background = 'rgba(189,189,189,0.65)';
+                    },150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
